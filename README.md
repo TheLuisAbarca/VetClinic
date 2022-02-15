@@ -1,8 +1,17 @@
-# curriculum-databases-Veterinary-Clinic-Database
+# Veterinary-Clinic-Database
 
-> This template should be used for database related projects at Microverse.
-> Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
+> A simple databases for a veterinary clinic.
+> It contains basic data about the animals that are stored in the clinic.
+> Right now it only contains a table called `animals` that contains the following fields:
+> 
+  * id:                 integer
+  * name:               string
+  * date_of_birth:      date
+  * escape_attempts:    integer
+  * neutered:           boolean
+  * weight_kg:          decimal
 
+A brief description of the name of the animals, their date of birth, the escape attempts, if is neutered and their weight on Kg.
 
 ## Getting Started
 
