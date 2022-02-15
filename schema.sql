@@ -8,3 +8,8 @@ CREATE TABLE animals (
     neutered        BOOLEAN DEFAULT FALSE,
     weight_kg       DECIMAL(5,2) NOT NULL
 );
+
+/* Second Milestone */
+
+/* Add a column species of type string to your animals table. */
+ALTER TABLE animals ADD species varchar(40) null;
