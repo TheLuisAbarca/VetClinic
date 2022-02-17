@@ -79,3 +79,305 @@ UPDATE animals SET owner_id=2 WHERE name IN ('Gabumon', 'Pikachu');
 UPDATE animals SET owner_id=3 WHERE name IN ('Devimon','Plantmon');
 UPDATE animals SET owner_id=4 WHERE name IN ('Charmander','Squirtle','Blossom');
 UPDATE animals SET owner_id=5 WHERE name IN ('Angemon','Boarmon');
+
+/* Fourth Milestone */
+/*
+Insert the following data for vets:
+    Vet William Tatcher is 45 years old and graduated Apr 23rd, 2000.
+    Vet Maisy Smith is 26 years old and graduated Jan 17th, 2019.
+    Vet Stephanie Mendez is 64 years old and graduated May 4th, 1981.
+    Vet Jack Harkness is 38 years old and graduated Jun 8th, 2008.
+*/
+
+insert into vets (name, age, date_of_graduation) values ('William Thatcher', 45, 'Apr 23, 2000');
+insert into vets (name, age, date_of_graduation) values ('Maisy Smith', 26, 'Jan 17, 2019');
+insert into vets (name, age, date_of_graduation) values ('Stephanie Mendez', 64, 'May 4, 1981');
+insert into vets (name, age, date_of_graduation) values ('Jack Harkness', 38, 'Jun 8, 2008');
+
+/* DATA SPECIALIZATIONS*/
+/* Vet William Tatcher is specialized in Pokemon. */
+insert into specializations (vet_id, species_id)
+select
+  vets.id,
+  species.id
+from
+  vets,
+  species
+where
+  vets.name = 'William Thatcher'
+and
+  species.name = 'Pokemon';
+
+/* Vet Stephanie Mendez is specialized in Digimon and Pokemon. */
+insert into specializations (vet_id, species_id)
+select
+  vets.id,
+  species.id
+from
+  vets,
+  species
+where
+  vets.name = 'Stephanie Mendez'
+and
+  species.name IN ('Pokemon', 'Digimon');
+
+/* Vet Jack Harkness is specialized in Digimon. */
+insert into specializations (vet_id, species_id)
+select
+  vets.id,
+  species.id
+from
+  vets,
+  species
+where
+  vets.name = 'Jack Harkness'
+and
+  species.name = 'Digimon';
+
+/* DATA VISITS*/
+/* Agumon visited William Tatcher on May 24th, 2020.*/
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-05-24'
+from
+  animals, vets
+where
+  animals.name = 'Agumon'
+and
+  vets.name = 'William Thatcher';
+
+/* Agumon visited Stephanie Mendez on Jul 22th, 2020.*/
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-07-22'
+from
+  animals, vets
+where
+  animals.name = 'Agumon'
+and
+  vets.name = 'Stephanie Mendez';
+/* Gabumon visited Jack Harkness on Feb 2nd, 2021. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2021-02-02'
+from
+  animals, vets
+where
+  animals.name = 'Gabumon'
+and
+  vets.name = 'Jack Harkness';
+/* Pikachu visited Maisy Smith on Jan 5th, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-01-05'
+from
+  animals, vets
+where
+  animals.name = 'Pikachu'
+and
+  vets.name = 'Maisy Smith';
+/* Pikachu visited Maisy Smith on Mar 8th, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-03-08'
+from
+  animals, vets
+where
+  animals.name = 'Pikachu'
+and
+  vets.name = 'Maisy Smith';
+/* Pikachu visited Maisy Smith on May 14th, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-05-14'
+from
+  animals, vets
+where
+  animals.name = 'Pikachu'
+and
+  vets.name = 'Maisy Smith';
+/* Devimon visited Stephanie Mendez on May 4th, 2021. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2021-05-04'
+from
+  animals, vets
+where
+  animals.name = 'Devimon'
+and
+  vets.name = 'Stephanie Mendez';
+/* Charmander visited Jack Harkness on Feb 24th, 2021. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2021-02-24'
+from
+  animals, vets
+where
+  animals.name = 'Charmander'
+and
+  vets.name = 'Jack Harkness';
+
+/* We have to insert again the digimon Plantmon*/
+insert into animals (name, date_of_birth, escape_attempts, neutered, weight_kg, species_id, owner_id)
+values ('Plantmon', 'Nov 15, 2022', 2, TRUE, 5.7, 2, 3);
+
+/* Plantmon visited Maisy Smith on Dec 21st, 2019. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2019-12-21'
+from
+  animals, vets
+where
+  animals.name = 'Plantmon'
+and
+  vets.name = 'Maisy Smith';
+/* Plantmon visited William Tatcher on Aug 10th, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-08-10'
+from
+  animals, vets
+where
+  animals.name = 'Plantmon'
+and
+  vets.name = 'William Thatcher';
+/* Plantmon visited Maisy Smith on Apr 7th, 2021. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2021-04-07'
+from
+  animals, vets
+where
+  animals.name = 'Plantmon'
+and
+  vets.name = 'Maisy Smith';
+/* Squirtle visited Stephanie Mendez on Sep 29th, 2019. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2019-09-29'
+from
+  animals, vets
+where
+  animals.name = 'Squirtle'
+and
+  vets.name = 'Stephanie Mendez';
+/* Angemon visited Jack Harkness on Oct 3rd, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-10-03'
+from
+  animals, vets
+where
+  animals.name = 'Angemon'
+and
+  vets.name = 'Jack Harkness';
+/* Angemon visited Jack Harkness on Nov 4th, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-11-04'
+from
+  animals, vets
+where
+  animals.name = 'Angemon'
+and
+  vets.name = 'Jack Harkness';
+/* Boarmon visited Maisy Smith on Jan 24th, 2019. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2019-01-24'
+from
+  animals, vets
+where
+  animals.name = 'Boarmon'
+and
+  vets.name = 'Maisy Smith';
+/* Boarmon visited Maisy Smith on May 15th, 2019. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2019-05-15'
+from
+  animals, vets
+where
+  animals.name = 'Boarmon'
+and
+  vets.name = 'Maisy Smith';
+/* Boarmon visited Maisy Smith on Feb 27th, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-02-27'
+from
+  animals, vets
+where
+  animals.name = 'Boarmon'
+and
+  vets.name = 'Maisy Smith';
+/* Boarmon visited Maisy Smith on Aug 3rd, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-08-03'
+from
+  animals, vets
+where
+  animals.name = 'Boarmon'
+and
+  vets.name = 'Maisy Smith';
+/* Blossom visited Stephanie Mendez on May 24th, 2020. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2020-05-24'
+from
+  animals, vets
+where
+  animals.name = 'Blossom'
+and
+  vets.name = 'Stephanie Mendez';
+/* Blossom visited William Tatcher on Jan 11th, 2021. */
+insert into visits (animal_id, vet_id, date_of_visit)
+select
+  animals.id,
+  vets.id,
+  '2021-01-11'
+from
+  animals, vets
+where
+  animals.name = 'Blossom'
+and
+  vets.name = 'William Thatcher';

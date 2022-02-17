@@ -54,3 +54,66 @@ references species(id);
 alter table animals add column owner_id INT,
 add constraint owner_id_fk foreign key (owner_id)
 references owners(id);
+
+/* Fourth Milestone */
+
+/* 
+Create a table named vets with the following columns:
+    id: integer (set it as autoincremented PRIMARY KEY)
+    name: string
+    age: integer
+    date_of_graduation: date
+*/
+CREATE TABLE vets(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(40) not null,
+  age int not null,
+  date_of_graduation date not null
+);
+
+CREATE TABLE vets (
+    id INT SERIAL PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    date_of_graduation DATE,
+);
+
+/* 
+Create a "join table" called 
+specializations to handle this relationship.
+*/
+CREATE TABLE specializations (
+    vet_id INT,
+    species_id INT
+);
+
+/*
+There is a many-to-many relationship between the tables 
+species and vets: a vet can specialize in multiple species, 
+and a species can have multiple vets specialized in it. 
+*/
+alter table specializations add constraint fk_vets
+foreign key (vet_id) references vets(id);
+
+alter table specializations add constraint fk_species
+foreign key (species_id) references species(id);
+
+/*
+Create a "join table" called visits to handle this relationship, 
+it should also keep track of the date of the visit.
+*/
+CREATE TABLE visits (
+    animal_id INT,
+    vet_id INT,
+    date_of_visit DATE
+);
+/*
+There is a many-to-many relationship between the tables animals
+and vets: an animal can visit multiple vets and one vet can be 
+visited by multiple animals. 
+*/
+alter table visits add constraint fk_animals
+foreign key (animal_id) references animals(id);
+
+alter table visits add constraint fk_vets
+foreign key (vet_id) references vets(id);
