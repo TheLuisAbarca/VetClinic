@@ -117,3 +117,19 @@ foreign key (animal_id) references animals(id);
 
 alter table visits add constraint fk_vets
 foreign key (vet_id) references vets(id);
+
+
+/* Fifth Milestone - Normalization & Performance */
+ALTER TABLE visits ADD COLUMN id SERIAL PRIMARY KEY;
+
+-- Create a non-clustered index on the visits table for animal_id to improve query performance
+CREATE INDEX animal_id_asc ON visits(animal_id ASC);
+
+-- Add primary key to specializations table
+ALTER TABLE specializations ADD COLUMN id_spec SERIAL PRIMARY KEY;
+
+-- Create a non-clustered index on the visits table for vet_id to improve query performance
+CREATE INDEX vet_id_asc ON visits(vet_id ASC);
+
+-- Create a non-clustered index on the owners table for email to improve query performance
+CREATE INDEX email_asc ON owners(email ASC);
