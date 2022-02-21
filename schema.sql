@@ -117,3 +117,7 @@ foreign key (animal_id) references animals(id);
 
 alter table visits add constraint fk_vets
 foreign key (vet_id) references vets(id);
+
+
+/* Fifth Milestone - Normalization & Performance */
+ALTER TABLE visits ADD COLUMN id SERIAL PRIMARY KEY;
