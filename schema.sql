@@ -121,3 +121,6 @@ foreign key (vet_id) references vets(id);
 
 /* Fifth Milestone - Normalization & Performance */
 ALTER TABLE visits ADD COLUMN id SERIAL PRIMARY KEY;
+
+-- Create an non-clustered index on the visits table for animal_id
+CREATE INDEX animal_id_asc ON visits(animal_id ASC);
