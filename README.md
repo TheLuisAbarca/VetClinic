@@ -1,5 +1,7 @@
 # Veterinary-Clinic-Database
 
+![Database Schema](./db_schema_IMG.png)
+
 > A simple databases for a veterinary clinic.
 > It contains basic data about the animals that are stored in the clinic.
 > Right now it only contains a table called `animals` that contains the following fields:
